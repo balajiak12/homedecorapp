@@ -1,0 +1,161 @@
+# Home Decor Affiliate Blog - Cursor Rules
+
+## Project Overview
+This is a modern, SEO-optimized affiliate blog website for the home decor niche. The project uses Next.js 14 with TypeScript, Tailwind CSS, and follows best practices for performance, SEO, and user experience.
+
+## Tech Stack
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **SEO**: next-seo
+- **Deployment**: Vercel-ready
+
+## Code Style & Best Practices
+
+### General
+- Use TypeScript for all components and utilities
+- Follow React best practices (functional components, hooks)
+- Use meaningful variable and function names
+- Add JSDoc comments for complex functions
+- Keep components small and focused (single responsibility)
+- Use Next.js App Router conventions
+
+### File Structure
+```
+/app
+  /(routes) - Route groups
+  /api - API routes
+/components
+  /ui - Reusable UI components
+  /layout - Layout components
+  /blog - Blog-specific components
+/lib - Utilities and helpers
+/types - TypeScript type definitions
+/public - Static assets
+```
+
+### Component Guidelines
+- Use functional components with TypeScript
+- Extract reusable logic into custom hooks
+- Use composition over inheritance
+- Keep components under 200 lines when possible
+- Use proper prop types with TypeScript interfaces
+- Implement proper error boundaries
+
+### Styling
+- Use Tailwind CSS utility classes
+- Create reusable component classes when needed
+- Use CSS variables for theme colors
+- Ensure responsive design (mobile-first approach)
+- Use semantic HTML elements
+- Maintain consistent spacing using Tailwind scale
+
+### SEO Optimization
+- Use semantic HTML5 elements
+- Implement proper heading hierarchy (H1 → H2 → H3)
+- Add meta tags using next-seo
+- Optimize images (WebP/AVIF, lazy loading, alt text)
+- Use structured data (JSON-LD) where appropriate
+- Ensure fast page load times
+- Implement proper canonical URLs
+
+### Blog Post Structure
+All blog posts must follow this pattern:
+1. Hero section with featured image
+2. Title and metadata (author, date, read time)
+3. Introduction paragraph
+4. Content sections with H2/H3 headings
+5. Ad slots (after intro, mid-content, end)
+6. Image galleries/sections
+7. Call-to-action sections
+8. Related posts section
+
+### Ad Placement
+- Ads should be non-intrusive
+- Place ads after natural content breaks
+- Use placeholder components for ad slots
+- Ensure ads don't break responsive layout
+- Follow Google AdSense best practices
+
+### Performance
+- Optimize images (use Next.js Image component)
+- Implement lazy loading for below-fold content
+- Minimize JavaScript bundle size
+- Use dynamic imports for heavy components
+- Implement proper caching strategies
+- Monitor Core Web Vitals
+
+### Accessibility
+- Use proper ARIA labels
+- Ensure keyboard navigation
+- Maintain color contrast ratios (WCAG AA)
+- Provide alt text for all images
+- Use semantic HTML elements
+- Test with screen readers
+
+### Git Workflow
+- Use descriptive commit messages
+- Create feature branches for new features
+- Keep commits atomic and focused
+- Review code before merging
+
+### Testing
+- Test on multiple devices and browsers
+- Verify responsive breakpoints
+- Check SEO metadata
+- Validate HTML/CSS
+- Test loading performance
+
+## Common Patterns
+
+### Blog Post Component
+```typescript
+interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  featuredImage: string;
+  author: string;
+  publishedAt: string;
+  category: string;
+  tags: string[];
+  readTime: number;
+}
+```
+
+### Ad Slot Component
+```typescript
+interface AdSlotProps {
+  position: 'header' | 'sidebar' | 'inline' | 'footer';
+  size: 'banner' | 'rectangle' | 'square';
+}
+```
+
+## Naming Conventions
+- Components: PascalCase (e.g., `BlogPost.tsx`)
+- Files: kebab-case for pages, PascalCase for components
+- Functions: camelCase
+- Constants: UPPER_SNAKE_CASE
+- Types/Interfaces: PascalCase with descriptive names
+
+## Dependencies
+- Keep dependencies up to date
+- Use exact versions in production
+- Review and remove unused dependencies
+- Prefer well-maintained packages
+
+## Security
+- Sanitize user inputs
+- Use environment variables for sensitive data
+- Implement proper CORS policies
+- Validate all external data
+- Keep dependencies updated for security patches
+
+## Documentation
+- Document complex algorithms
+- Add README for setup instructions
+- Document API endpoints
+- Maintain changelog for major updates
+
