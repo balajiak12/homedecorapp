@@ -20,14 +20,14 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-50 via-white to-accent-50 py-20 md:py-32">
+      <section className="relative bg-gradient-to-br from-primary-50 via-white to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20 md:py-32">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 mb-6 text-balance">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 dark:text-white mb-6 text-balance">
                 Live Better, Smarter, and More Beautifully
               </h1>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                 Discover practical money-saving tips, home decor inspiration, and lifestyle advice to help you create a beautiful, affordable life. From budgeting strategies to interior design, we&apos;ve got you covered.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -59,13 +59,13 @@ export default function Home() {
       </div>
 
       {/* Featured Posts */}
-      <section id="featured-posts" className="py-16 bg-white">
+      <section id="featured-posts" className="py-16 bg-white dark:bg-gray-900">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-white mb-4">
               Latest Articles
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Explore our collection of lifestyle tips, money-saving strategies, home decor inspiration, and expert advice
             </p>
           </div>
@@ -86,23 +86,23 @@ export default function Home() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-16 bg-primary-600 text-white">
+      <section className="py-16 bg-primary-600 dark:bg-primary-800 text-white">
         <div className="container-custom">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
               Stay Inspired
             </h2>
-            <p className="text-lg text-primary-100 mb-8">
+            <p className="text-lg text-primary-100 dark:text-primary-200 mb-8">
               Get the latest lifestyle tips, money-saving strategies, and home decor inspiration delivered to your inbox
             </p>
             <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+                className="flex-1 px-4 py-3 rounded-md text-gray-900 dark:text-gray-100 dark:bg-gray-700 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white dark:focus:ring-primary-300"
                 required
               />
-              <button type="submit" className="px-6 py-3 bg-white text-primary-600 rounded-md font-semibold hover:bg-primary-50 transition-colors">
+              <button type="submit" className="px-6 py-3 bg-white dark:bg-gray-700 text-primary-600 dark:text-white rounded-md font-semibold hover:bg-primary-50 dark:hover:bg-gray-600 transition-colors">
                 Subscribe
               </button>
             </form>

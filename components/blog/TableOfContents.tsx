@@ -29,14 +29,14 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
   if (headings.length === 0) return null
 
   return (
-    <nav className="bg-gray-50 p-6 rounded-lg mb-8" aria-label="Table of contents">
-      <h3 className="font-semibold text-gray-900 mb-4">Table of Contents</h3>
+    <nav className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg mb-8" aria-label="Table of contents">
+      <h3 className="font-semibold text-gray-900 dark:text-white mb-4">Table of Contents</h3>
       <ul className="space-y-2">
         {headings.map((heading) => (
           <li key={heading.id} className={heading.level === 2 ? '' : 'ml-4'}>
             <a
               href={`#${heading.id}`}
-              className="text-sm text-gray-600 hover:text-primary-600 transition-colors"
+              className="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
             >
               {heading.text}
             </a>

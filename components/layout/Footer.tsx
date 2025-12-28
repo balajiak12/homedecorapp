@@ -2,13 +2,13 @@ import Link from 'next/link'
 
 const footerLinks = {
   categories: [
-    { name: 'Home Decor', href: '/category/home-decor' },
-    { name: 'Holidays', href: '/category/holidays' },
+    { name: 'Home Decor', href: '/home-decor' },
+    { name: 'Holidays', href: '/holidays' },
     // Add more main categories here as needed
   ],
   company: [
     { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Sitemap', href: '/sitemap.xml' },
     { name: 'Privacy Policy', href: '/privacy' },
     { name: 'Terms of Service', href: '/terms' },
   ],

@@ -1,9 +1,12 @@
-import { getBlogPostsByCategory } from '@/lib/blog'
+import { getBlogPostsByCategory, getBlogPost } from '@/lib/blog'
 import BlogCard from '@/components/blog/BlogCard'
 import AdSlot from '@/components/blog/AdSlot'
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
+import BlogPostPageContent from '@/components/blog/BlogPostPageContent'
+
+import { blogPosts } from '@/lib/blog'
 
 interface PageProps {
   params: {
@@ -11,7 +14,47 @@ interface PageProps {
   }
 }
 
+export async function generateStaticParams() {
+  // Generate params for both blog posts and category pages
+  const blogPostSlugs = blogPosts
+    .filter(post => {
+      const isHolidayCategory = post.category === 'Valentines Day' || post.category.toLowerCase().includes('holiday')
+      return isHolidayCategory // Only holiday posts
+    })
+    .map(post => ({ slug: post.slug }))
+  
+  // Add category slugs
+  const categorySlugs = ['valentines-day'].map(slug => ({ slug }))
+  
+  return [...blogPostSlugs, ...categorySlugs]
+}
+
 export function generateMetadata({ params }: PageProps): Metadata {
+  // Check if it's a blog post first
+  const post = getBlogPost(params.slug)
+  if (post) {
+    return {
+      title: post.seo?.metaTitle || post.title,
+      description: post.seo?.metaDescription || post.excerpt,
+      keywords: post.seo?.keywords || post.tags,
+      openGraph: {
+        title: post.title,
+        description: post.excerpt,
+        images: [post.featuredImage],
+        type: 'article',
+        publishedTime: post.publishedAt,
+        authors: [post.author.name],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: post.title,
+        description: post.excerpt,
+        images: [post.featuredImage],
+      },
+    }
+  }
+
+  // Otherwise it's a category page
   const categoryName = params.slug
     .split('-')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
@@ -19,11 +62,26 @@ export function generateMetadata({ params }: PageProps): Metadata {
 
   return {
     title: `${categoryName} Decor Ideas & Inspiration`,
-    description: `Discover the latest ${categoryName.toLowerCase()} decor ideas, design tips, and inspiration for creating beautiful spaces.`,
+    description: `Discover the latest ${categoryName.toLowerCase()} decor ideas, design tips, and inspiration.`,
   }
 }
 
-export default function CategoryPage({ params }: PageProps) {
+export default function HolidaysSubcategoryPage({ params }: PageProps) {
+  // Check if it's a blog post first
+  const post = getBlogPost(params.slug)
+  if (post) {
+    // Render blog post page
+    const parentCategory = { label: 'Holidays', href: '/holidays' }
+    const breadcrumbItems = [
+      { label: 'Home', href: '/' },
+      parentCategory,
+      { label: post.title },
+    ]
+
+    return <BlogPostPageContent post={post} breadcrumbItems={breadcrumbItems} />
+  }
+
+  // Otherwise it's a category page
   const posts = getBlogPostsByCategory(params.slug)
   const categoryName = params.slug
     .split('-')
@@ -34,11 +92,11 @@ export default function CategoryPage({ params }: PageProps) {
     notFound()
   }
 
-  // Build breadcrumb items - match the URL structure (just Home → Category)
-  const isHolidayCategory = params.slug === 'holidays' || params.slug === 'valentines-day'
+  // Build breadcrumb items - match the URL structure
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
-    { label: isHolidayCategory ? categoryName : `${categoryName} Decor` },
+    { label: 'Holidays', href: '/holidays' },
+    { label: categoryName },
   ]
 
   return (
@@ -54,7 +112,7 @@ export default function CategoryPage({ params }: PageProps) {
       <section className="bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800 py-16">
         <div className="container-custom">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 dark:text-white mb-4">
-            {categoryName} Decor
+            {categoryName}
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl">
             Discover inspiring {categoryName.toLowerCase()} decor ideas, design tips, and expert advice to transform your space.

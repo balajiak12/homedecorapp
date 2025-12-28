@@ -35,7 +35,7 @@ export default function Breadcrumbs({ items, className = '' }: BreadcrumbsProps)
               {isFirst ? (
                 <Link
                   href={item.href || '/'}
-                  className="flex items-center text-gray-500 hover:text-primary-600 transition-colors"
+                  className="flex items-center text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                   itemProp="item"
                 >
                   <Home className="h-4 w-4" />
@@ -43,7 +43,7 @@ export default function Breadcrumbs({ items, className = '' }: BreadcrumbsProps)
                 </Link>
               ) : isLast ? (
                 <span
-                  className="text-gray-900 font-medium"
+                  className="text-gray-900 dark:text-white font-medium"
                   itemProp="name"
                   aria-current="page"
                 >
@@ -52,7 +52,7 @@ export default function Breadcrumbs({ items, className = '' }: BreadcrumbsProps)
               ) : (
                 <Link
                   href={item.href || '#'}
-                  className="text-gray-500 hover:text-primary-600 transition-colors"
+                  className="text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                   itemProp="item"
                 >
                   <span itemProp="name">{item.label}</span>
@@ -60,7 +60,7 @@ export default function Breadcrumbs({ items, className = '' }: BreadcrumbsProps)
               )}
               <meta itemProp="position" content={String(index + 1)} />
               {!isLast && (
-                <ChevronRight className="h-4 w-4 text-gray-400 mx-2 flex-shrink-0" aria-hidden="true" />
+                <ChevronRight className="h-4 w-4 text-gray-400 dark:text-gray-500 mx-2 flex-shrink-0" aria-hidden="true" />
               )}
             </li>
           )

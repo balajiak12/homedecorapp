@@ -46,7 +46,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                   <div className={`relative w-full rounded-lg overflow-hidden ${
                     isPinterestPin 
                       ? 'aspect-[2/3] max-w-md mx-auto bg-transparent' // Pinterest pin aspect ratio, no background
-                      : 'aspect-video bg-gray-100' // Standard 16:9
+                      : 'aspect-video bg-gray-100 dark:bg-gray-800' // Standard 16:9
                   }`}>
                     <img
                       src={encodedSrc}
@@ -55,7 +55,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                     />
                   </div>
                   {alt && (
-                    <p className="text-sm text-gray-500 italic mt-2 text-center">{alt}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 italic mt-2 text-center">{alt}</p>
                   )}
                 </div>
               )
@@ -74,7 +74,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                 <div className={`relative w-full rounded-lg overflow-hidden ${
                   isPinterestPin 
                     ? 'aspect-[2/3] max-w-md mx-auto bg-transparent' // Pinterest pin aspect ratio (2:3), no background
-                    : 'aspect-video bg-gray-100' // Standard 16:9 for other images
+                    : 'aspect-video bg-gray-100 dark:bg-gray-800' // Standard 16:9 for other images
                 }`}>
                   <Image
                     src={encodedSrc}
@@ -85,50 +85,50 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                   />
                 </div>
                 {alt && (
-                  <p className="text-sm text-gray-500 italic mt-2 text-center">{alt}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 italic mt-2 text-center">{alt}</p>
                 )}
               </div>
             )
           },
           // Custom heading styles
           h1: ({ node, ...props }) => (
-            <h1 className="text-4xl font-serif font-bold text-gray-900 mt-12 mb-6 first:mt-0">
+            <h1 className="text-4xl font-serif font-bold text-gray-900 dark:text-white mt-12 mb-6 first:mt-0">
               {props.children as ReactNode}
             </h1>
           ),
           h2: ({ node, ...props }) => (
-            <h2 className="text-3xl font-serif font-bold text-gray-900 mt-10 mb-4">
+            <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">
               {props.children as ReactNode}
             </h2>
           ),
           h3: ({ node, ...props }) => (
-            <h3 className="text-2xl font-serif font-bold text-gray-900 mt-8 mb-3">
+            <h3 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mt-8 mb-3">
               {props.children as ReactNode}
             </h3>
           ),
           // Paragraph styling
           p: ({ node, ...props }) => (
-            <p className="text-gray-700 leading-relaxed my-4">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed my-4">
               {props.children as ReactNode}
             </p>
           ),
           // List styling
           ul: ({ node, ...props }) => (
-            <ul className="list-disc list-inside my-4 space-y-2 text-gray-700">
+            <ul className="list-disc list-outside my-4 space-y-2 text-gray-700 dark:text-gray-300 ml-6">
               {props.children as ReactNode}
             </ul>
           ),
           ol: ({ node, ...props }) => (
-            <ol className="list-decimal list-inside my-4 space-y-2 text-gray-700">
+            <ol className="list-decimal list-outside my-4 space-y-2 text-gray-700 dark:text-gray-300 ml-6">
               {props.children as ReactNode}
             </ol>
           ),
           li: ({ node, ...props }) => (
-            <li className="text-gray-700">{props.children as ReactNode}</li>
+            <li className="text-gray-700 dark:text-gray-300">{props.children as ReactNode}</li>
           ),
           // Bold text
           strong: ({ node, ...props }) => (
-            <strong className="font-semibold text-gray-900">
+            <strong className="font-semibold text-gray-900 dark:text-white">
               {props.children as ReactNode}
             </strong>
           ),
@@ -140,7 +140,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary-600 hover:text-primary-700 underline"
+                className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 underline"
               >
                 {props.children as ReactNode}
               </a>
@@ -148,7 +148,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           },
           // Blockquotes
           blockquote: ({ node, ...props }) => (
-            <blockquote className="border-l-4 border-primary-500 pl-4 my-6 italic text-gray-600">
+            <blockquote className="border-l-4 border-primary-500 dark:border-primary-400 pl-4 my-6 italic text-gray-600 dark:text-gray-400">
               {props.children as ReactNode}
             </blockquote>
           ),
@@ -159,19 +159,19 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             const isInline = !className
             if (isInline) {
               return (
-                <code className="bg-gray-100 px-2 py-1 rounded text-sm font-mono text-gray-800">
+                <code className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm font-mono text-gray-800 dark:text-gray-200">
                   {props.children as ReactNode}
                 </code>
               )
             }
             return (
-              <code className="block bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto my-4">
+              <code className="block bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-200 p-4 rounded-lg overflow-x-auto my-4">
                 {props.children as ReactNode}
               </code>
             )
           },
           // Horizontal rule
-          hr: () => <hr className="my-8 border-gray-200" />,
+          hr: () => <hr className="my-8 border-gray-200 dark:border-gray-700" />,
         }}
       >
         {content}

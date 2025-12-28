@@ -15,7 +15,7 @@ export default function RelatedPosts({ posts, currentPostId }: RelatedPostsProps
 
   return (
     <section className="mt-16">
-      <h2 className="text-3xl font-serif font-bold text-gray-900 mb-8">
+      <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-8">
         Related Articles
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

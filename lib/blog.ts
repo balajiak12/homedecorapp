@@ -1,5 +1,12 @@
 ﻿import type { BlogPost } from '@/types/blog'
 
+// Helper function to get blog post URL based on category
+export function getBlogPostUrl(post: BlogPost): string {
+  const isHolidayCategory = post.category === 'Valentines Day' || post.category.toLowerCase().includes('holiday')
+  const categoryPrefix = isHolidayCategory ? '/holidays' : '/home-decor'
+  return `${categoryPrefix}/${post.slug}`
+}
+
 // In a real application, this would fetch from a CMS or database
 export const blogPosts: BlogPost[] = [
   {
@@ -487,7 +494,7 @@ Apply to bathroom windows, bedroom windows, or any space where you want to add r
 
 Suspend a **three-dimensional floral sphere** that appears to float like a romantic planet above your space. This installation-quality piece brings flower arrangements to eye level and above, creating visual drama that traditional centerpieces can't achieve.
 
-Create the sphere structure using chicken wire formed into a ball (24-30 inches works well). Cover the entire surface with flowers in an ombre arrangement - deep red roses at the top transitioning through coral, pink, and ending with cream at the bottom. Use floral water tubes on stems to keep fresh flowers hydrated, or opt for high-quality silk flowers for permanent installation. Integrate tiny LED lights throughout for a glowing effect after dark.
+Create the sphere structure using chicken wire formed into a ball (24-30 inches works well for most spaces). Cover the entire surface with flowers in an ombre arrangement - deep red roses at the top transitioning through coral, pink, and ending with cream at the bottom. Use floral water tubes on stems to keep fresh flowers hydrated, or opt for high-quality silk flowers for permanent installation. Integrate tiny LED lights throughout for a glowing effect after dark.
 
 Suspend the sphere from the ceiling using sturdy fishing line or thin chain, positioning it over dining tables, in stairwells, or in high-ceiling entryways. The sphere format means the arrangement looks beautiful from every angle - no "front" or "back" to worry about.
 

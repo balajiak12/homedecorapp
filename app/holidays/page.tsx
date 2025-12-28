@@ -1,44 +1,25 @@
-import { getBlogPostsByCategory } from '@/lib/blog'
+import { blogPosts } from '@/lib/blog'
 import BlogCard from '@/components/blog/BlogCard'
 import AdSlot from '@/components/blog/AdSlot'
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
-import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 
-interface PageProps {
-  params: {
-    slug: string
-  }
+export const metadata: Metadata = {
+  title: 'Holidays Decor Ideas & Inspiration | Modern Life Maven',
+  description: 'Discover inspiring holiday decor ideas, seasonal design tips, and expert advice for celebrating throughout the year.',
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
-  const categoryName = params.slug
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
+export default function HolidaysCategoryPage() {
+  // Filter to only holiday posts
+  const posts = blogPosts.filter(post => {
+    const category = post.category.toLowerCase()
+    return category.includes('holiday') || category === 'valentines day'
+  })
 
-  return {
-    title: `${categoryName} Decor Ideas & Inspiration`,
-    description: `Discover the latest ${categoryName.toLowerCase()} decor ideas, design tips, and inspiration for creating beautiful spaces.`,
-  }
-}
-
-export default function CategoryPage({ params }: PageProps) {
-  const posts = getBlogPostsByCategory(params.slug)
-  const categoryName = params.slug
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
-
-  if (posts.length === 0) {
-    notFound()
-  }
-
-  // Build breadcrumb items - match the URL structure (just Home → Category)
-  const isHolidayCategory = params.slug === 'holidays' || params.slug === 'valentines-day'
+  // Build breadcrumb items
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
-    { label: isHolidayCategory ? categoryName : `${categoryName} Decor` },
+    { label: 'Holidays' },
   ]
 
   return (
@@ -54,10 +35,10 @@ export default function CategoryPage({ params }: PageProps) {
       <section className="bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800 py-16">
         <div className="container-custom">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 dark:text-white mb-4">
-            {categoryName} Decor
+            Holidays
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl">
-            Discover inspiring {categoryName.toLowerCase()} decor ideas, design tips, and expert advice to transform your space.
+            Discover inspiring holiday decor ideas, seasonal design tips, and expert advice to celebrate throughout the year.
           </p>
         </div>
       </section>

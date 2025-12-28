@@ -1,5 +1,3 @@
-import { notFound } from 'next/navigation'
-import { getBlogPost, blogPosts } from '@/lib/blog'
 import Image from 'next/image'
 import { format } from 'date-fns'
 import { Clock, Calendar, User } from 'lucide-react'
@@ -7,80 +5,20 @@ import AdSlot from '@/components/blog/AdSlot'
 import RelatedPosts from '@/components/blog/RelatedPosts'
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import MarkdownRenderer from '@/components/blog/MarkdownRenderer'
-import { Metadata } from 'next'
+import type { BlogPost } from '@/types/blog'
+import { blogPosts } from '@/lib/blog'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://modernlifemaven.com'
-
-interface PageProps {
-  params: {
-    slug: string
-  }
+interface BreadcrumbItem {
+  label: string
+  href?: string
 }
 
-export async function generateStaticParams() {
-  return blogPosts.map((post) => ({
-    slug: post.slug,
-  }))
+interface BlogPostPageContentProps {
+  post: BlogPost
+  breadcrumbItems: BreadcrumbItem[]
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const post = getBlogPost(params.slug)
-
-  if (!post) {
-    return {
-      title: 'Post Not Found',
-    }
-  }
-
-  return {
-    title: post.seo?.metaTitle || post.title,
-    description: post.seo?.metaDescription || post.excerpt,
-    keywords: post.seo?.keywords || post.tags,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      images: [
-        {
-          url: post.featuredImage,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
-      type: 'article',
-      publishedTime: post.publishedAt,
-      authors: [post.author.name],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt,
-      images: [post.featuredImage],
-    },
-  }
-}
-
-export default function BlogPostPage({ params }: PageProps) {
-  const post = getBlogPost(params.slug)
-
-  if (!post) {
-    notFound()
-  }
-
-
-  // Build breadcrumb items
-  // Determine parent category based on post category
-  const isHolidayCategory = post.category === 'Valentines Day' || post.category.toLowerCase().includes('holiday')
-  const parentCategory = isHolidayCategory 
-    ? { label: 'Holidays', href: '/holidays' }
-    : { label: 'Home Decor', href: '/home-decor' }
-  
-  const breadcrumbItems = [
-    { label: 'Home', href: '/' },
-    parentCategory,
-    { label: post.title },
-  ]
-
+export default function BlogPostPageContent({ post, breadcrumbItems }: BlogPostPageContentProps) {
   return (
     <>
       {/* Breadcrumbs */}
@@ -111,6 +49,7 @@ export default function BlogPostPage({ params }: PageProps) {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 text-balance">
               {post.title}
             </h1>
+            
             <div className="flex flex-wrap items-center gap-6 text-sm text-gray-200">
               <div className="flex items-center gap-2">
                 <User className="h-4 w-4" />
@@ -147,12 +86,12 @@ export default function BlogPostPage({ params }: PageProps) {
               <AdSlot position="inline" size="rectangle" className="my-12" />
 
               {/* Tags */}
-              <div className="mt-12 pt-8 border-t border-gray-200">
+              <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
                 <div className="flex flex-wrap gap-2">
                   {post.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
+                      className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm"
                     >
                       #{tag}
                     </span>
@@ -161,14 +100,14 @@ export default function BlogPostPage({ params }: PageProps) {
               </div>
 
               {/* Author Bio */}
-              <div className="mt-12 p-6 bg-gray-50 rounded-lg">
+              <div className="mt-12 p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
                 <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-primary-200 rounded-full flex items-center justify-center">
-                    <User className="h-8 w-8 text-primary-600" />
+                  <div className="w-16 h-16 bg-primary-200 dark:bg-primary-900 rounded-full flex items-center justify-center">
+                    <User className="h-8 w-8 text-primary-600 dark:text-primary-400" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">{post.author.name}</h3>
-                    <p className="text-gray-600 text-sm">
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{post.author.name}</h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
                       Interior design enthusiast and home decor expert with years of experience creating beautiful living spaces.
                     </p>
                   </div>
@@ -190,36 +129,6 @@ export default function BlogPostPage({ params }: PageProps) {
           <RelatedPosts posts={blogPosts} currentPostId={post.id} />
         </div>
       </article>
-
-      {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
-            headline: post.title || '',
-            image: post.featuredImage || '',
-            datePublished: post.publishedAt || '',
-            dateModified: post.updatedAt || post.publishedAt || '',
-            author: {
-              '@type': 'Person',
-              name: post.author?.name || '',
-            },
-            publisher: {
-              '@type': 'Organization',
-              name: 'Modern Life Maven',
-              logo: {
-                '@type': 'ImageObject',
-                url: `${SITE_URL}/logo.png`,
-              },
-            },
-            description: post.excerpt || '',
-            articleSection: post.category || '',
-            keywords: (post.tags || []).join(', '),
-          }),
-        }}
-      />
     </>
   )
 }

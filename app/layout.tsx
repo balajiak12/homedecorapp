@@ -5,6 +5,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import BottomBannerAd from '@/components/ads/BottomBannerAd'
 import StickySidebarAd from '@/components/ads/StickySidebarAd'
+import { ThemeProvider } from '@/components/providers/ThemeProvider'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -77,15 +78,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
       <body>
-        <Header />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
-        <BottomBannerAd />
-        <StickySidebarAd />
+        <ThemeProvider>
+          <Header />
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
+          <BottomBannerAd />
+          <StickySidebarAd />
+        </ThemeProvider>
       </body>
     </html>
   )

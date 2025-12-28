@@ -63,11 +63,11 @@ export default function StickySidebarAd({ className = '' }: StickySidebarAdProps
       role="complementary"
       aria-label="Advertisement"
     >
-      <div className="relative bg-white border border-gray-200 rounded-lg shadow-xl w-64">
+      <div className="relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl w-64">
         {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute -top-2 -right-2 z-10 bg-white rounded-full p-1 shadow-md text-gray-400 hover:text-gray-600 transition-colors"
+          className="absolute -top-2 -right-2 z-10 bg-white dark:bg-gray-800 rounded-full p-1 shadow-md text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors border border-gray-200 dark:border-gray-700"
           aria-label="Close advertisement"
         >
           <X className="h-4 w-4" />
@@ -75,12 +75,12 @@ export default function StickySidebarAd({ className = '' }: StickySidebarAdProps
 
         {/* Ad Content */}
         <div className="p-4">
-          <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-96 flex items-center justify-center">
-            <div className="text-center text-gray-400 text-sm p-4">
+          <div className="bg-gray-100 dark:bg-gray-700 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg h-96 flex items-center justify-center">
+            <div className="text-center text-gray-400 dark:text-gray-500 text-sm p-4">
               <p className="font-medium">Advertisement</p>
               <p className="text-xs mt-1">300x600 / 160x600</p>
-              <p className="text-xs mt-1 text-gray-300">Sticky Sidebar Ad</p>
-              <p className="text-xs mt-2 text-gray-300">Desktop Only</p>
+              <p className="text-xs mt-1 text-gray-300 dark:text-gray-400">Sticky Sidebar Ad</p>
+              <p className="text-xs mt-2 text-gray-300 dark:text-gray-400">Desktop Only</p>
             </div>
           </div>
         </div>
