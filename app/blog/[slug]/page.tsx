@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import { getBlogPost, blogPosts } from '@/lib/blog'
 import Image from 'next/image'
 import { format } from 'date-fns'
-import { Clock, Calendar, User } from 'lucide-react'
+import { Clock, Calendar } from 'lucide-react'
 import AdSlot from '@/components/blog/AdSlot'
 import RelatedPosts from '@/components/blog/RelatedPosts'
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
@@ -49,7 +49,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       ],
       type: 'article',
       publishedTime: post.publishedAt,
-      authors: [post.author.name],
     },
     twitter: {
       card: 'summary_large_image',
@@ -71,15 +70,24 @@ export default function BlogPostPage({ params }: PageProps) {
   // Build breadcrumb items
   // Determine parent category based on post category
   const isHolidayCategory = post.category === 'Valentines Day' || post.category.toLowerCase().includes('holiday')
-  const parentCategory = isHolidayCategory 
-    ? { label: 'Holidays', href: '/holidays' }
-    : { label: 'Home Decor', href: '/home-decor' }
   
-  const breadcrumbItems = [
-    { label: 'Home', href: '/' },
-    parentCategory,
-    { label: post.title },
-  ]
+  // Convert category name to slug for subcategory link
+  const categorySlug = post.category.toLowerCase().replace(/\s+/g, '-')
+  const categoryLabel = post.category
+  
+  const breadcrumbItems = isHolidayCategory
+    ? [
+        { label: 'Home', href: '/' },
+        { label: 'Holidays', href: '/holidays' },
+        { label: categoryLabel, href: `/holidays/${categorySlug}` },
+        { label: post.title },
+      ]
+    : [
+        { label: 'Home', href: '/' },
+        { label: 'Home Decor', href: '/home-decor' },
+        { label: categoryLabel, href: `/home-decor/${categorySlug}` },
+        { label: post.title },
+      ]
 
   return (
     <>
@@ -112,10 +120,6 @@ export default function BlogPostPage({ params }: PageProps) {
               {post.title}
             </h1>
             <div className="flex flex-wrap items-center gap-6 text-sm text-gray-200">
-              <div className="flex items-center gap-2">
-                <User className="h-4 w-4" />
-                <span>{post.author.name}</span>
-              </div>
               <div className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
                 <time dateTime={post.publishedAt}>
@@ -160,20 +164,6 @@ export default function BlogPostPage({ params }: PageProps) {
                 </div>
               </div>
 
-              {/* Author Bio */}
-              <div className="mt-12 p-6 bg-gray-50 rounded-lg">
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-primary-200 rounded-full flex items-center justify-center">
-                    <User className="h-8 w-8 text-primary-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">{post.author.name}</h3>
-                    <p className="text-gray-600 text-sm">
-                      Interior design enthusiast and home decor expert with years of experience creating beautiful living spaces.
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/* Sidebar */}
@@ -202,10 +192,6 @@ export default function BlogPostPage({ params }: PageProps) {
             image: post.featuredImage || '',
             datePublished: post.publishedAt || '',
             dateModified: post.updatedAt || post.publishedAt || '',
-            author: {
-              '@type': 'Person',
-              name: post.author?.name || '',
-            },
             publisher: {
               '@type': 'Organization',
               name: 'Modern Life Maven',

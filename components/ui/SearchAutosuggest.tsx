@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { Search, X, Clock } from 'lucide-react'
-import { blogPosts } from '@/lib/blog'
 import type { BlogPost } from '@/types/blog'
 import { format } from 'date-fns'
 import Image from 'next/image'
@@ -16,13 +15,24 @@ export default function SearchAutosuggest() {
   const [isOpen, setIsOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [selectedIndex, setSelectedIndex] = useState(-1)
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
   const searchRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
 
+  // Load blog posts on mount
+  useEffect(() => {
+    fetch('/api/posts')
+      .then((res) => res.json())
+      .then((data) => setBlogPosts(data))
+      .catch((error) => {
+        console.error('Failed to load posts for search:', error)
+      })
+  }, [])
+
   // Debounced search function
   const searchResults = useMemo(() => {
-    if (!query.trim() || query.length < 2) return []
+    if (!query.trim() || query.length < 2 || blogPosts.length === 0) return []
 
     const searchTerm = query.toLowerCase().trim()
     const results: SearchResult[] = []
@@ -54,7 +64,7 @@ export default function SearchAutosuggest() {
         return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
       })
       .slice(0, 6) // Limit to 6 results
-  }, [query])
+  }, [query, blogPosts])
 
   const handleSelect = useCallback((post: BlogPost) => {
     router.push(`/blog/${post.slug}`)

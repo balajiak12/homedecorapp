@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { format } from 'date-fns'
-import { Clock, Calendar, User } from 'lucide-react'
+import { Clock, Calendar } from 'lucide-react'
 import AdSlot from '@/components/blog/AdSlot'
 import RelatedPosts from '@/components/blog/RelatedPosts'
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
@@ -52,10 +52,6 @@ export default function BlogPostPageContent({ post, breadcrumbItems }: BlogPostP
             
             <div className="flex flex-wrap items-center gap-6 text-sm text-gray-200">
               <div className="flex items-center gap-2">
-                <User className="h-4 w-4" />
-                <span>{post.author.name}</span>
-              </div>
-              <div className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
                 <time dateTime={post.publishedAt}>
                   {format(new Date(post.publishedAt), 'MMMM d, yyyy')}
@@ -99,20 +95,6 @@ export default function BlogPostPageContent({ post, breadcrumbItems }: BlogPostP
                 </div>
               </div>
 
-              {/* Author Bio */}
-              <div className="mt-12 p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-primary-200 dark:bg-primary-900 rounded-full flex items-center justify-center">
-                    <User className="h-8 w-8 text-primary-600 dark:text-primary-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{post.author.name}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      Interior design enthusiast and home decor expert with years of experience creating beautiful living spaces.
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/* Sidebar */}

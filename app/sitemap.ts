@@ -7,8 +7,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogPostEntries: MetadataRoute.Sitemap = blogPosts.map((post) => {
     const isHolidayCategory = post.category === 'Valentines Day' || post.category.toLowerCase().includes('holiday')
     const categoryPrefix = isHolidayCategory ? '/holidays' : '/home-decor'
+    const categorySlug = post.category.toLowerCase().replace(/\s+/g, '-')
     return {
-      url: `${baseUrl}${categoryPrefix}/${post.slug}`,
+      url: `${baseUrl}${categoryPrefix}/${categorySlug}/${post.slug}`,
       lastModified: post.updatedAt || post.publishedAt,
       changeFrequency: 'weekly',
       priority: 0.8,

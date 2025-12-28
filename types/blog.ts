@@ -5,7 +5,7 @@ export interface BlogPost {
   excerpt: string
   content: string
   featuredImage: string
-  author: {
+  author?: {
     name: string
     avatar?: string
   }
