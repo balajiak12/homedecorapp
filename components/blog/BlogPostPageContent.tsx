@@ -5,6 +5,7 @@ import AdSlot from '@/components/blog/AdSlot'
 import RelatedPosts from '@/components/blog/RelatedPosts'
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import MarkdownRenderer from '@/components/blog/MarkdownRenderer'
+import StickyTableOfContents from '@/components/blog/StickyTableOfContents'
 import type { BlogPost } from '@/types/blog'
 import { blogPosts } from '@/lib/blog'
 
@@ -39,26 +40,26 @@ export default function BlogPostPageContent({ post, breadcrumbItems }: BlogPostP
             priority
           />
         </div>
-        <div className="relative container-custom py-20 md:py-32">
+        <div className="relative container-custom py-12 sm:py-20 md:py-32">
           <div className="max-w-3xl">
             <div className="mb-6">
               <span className="px-4 py-2 bg-primary-600 text-white rounded-full text-sm font-medium">
                 {post.category}
               </span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 text-balance">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 text-balance">
               {post.title}
             </h1>
             
-            <div className="flex flex-wrap items-center gap-6 text-sm text-gray-200">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-200">
               <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
+                <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
                 <time dateTime={post.publishedAt}>
                   {format(new Date(post.publishedAt), 'MMMM d, yyyy')}
                 </time>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
+                <Clock className="h-3 w-3 sm:h-4 sm:w-4" />
                 <span>{post.readTime} min read</span>
               </div>
             </div>
@@ -67,13 +68,18 @@ export default function BlogPostPageContent({ post, breadcrumbItems }: BlogPostP
       </section>
 
       {/* Main Content */}
-      <article className="py-12">
+      <article className="py-8 sm:py-12">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
             {/* Main Content */}
             <div className="lg:col-span-8">
               {/* Ad Slot - After Hero */}
               <AdSlot position="inline" size="banner" className="mb-8" />
+
+              {/* Table of Contents - Mobile version shows here, desktop version positioned in sidebar via CSS */}
+              <div className="lg:hidden">
+                <StickyTableOfContents content={post.content} postSlug={post.slug} />
+              </div>
 
               {/* Article Content */}
               <MarkdownRenderer content={post.content} />
@@ -99,7 +105,12 @@ export default function BlogPostPageContent({ post, breadcrumbItems }: BlogPostP
 
             {/* Sidebar */}
             <aside className="lg:col-span-4">
-              <div className="sticky top-24 space-y-8">
+              <div className="sticky top-24 space-y-6">
+                {/* Desktop Table of Contents */}
+                <div className="hidden lg:block">
+                  <StickyTableOfContents content={post.content} postSlug={post.slug} />
+                </div>
+                
                 {/* Ad Slot - Sidebar */}
                 <AdSlot position="sidebar" size="skyscraper" />
                 <AdSlot position="sidebar" size="square" />

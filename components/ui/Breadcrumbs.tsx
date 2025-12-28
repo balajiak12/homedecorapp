@@ -17,7 +17,7 @@ export default function Breadcrumbs({ items, className = '' }: BreadcrumbsProps)
   return (
     <nav
       aria-label="Breadcrumb"
-      className={`flex items-center space-x-2 text-sm ${className}`}
+      className={`flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm ${className}`}
     >
       <ol className="flex items-center space-x-2" itemScope itemType="https://schema.org/BreadcrumbList">
         {items.map((item, index) => {

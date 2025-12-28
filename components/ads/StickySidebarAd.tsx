@@ -67,7 +67,7 @@ export default function StickySidebarAd({ className = '' }: StickySidebarAdProps
         {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute -top-2 -right-2 z-10 bg-white dark:bg-gray-800 rounded-full p-1 shadow-md text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors border border-gray-200 dark:border-gray-700"
+          className="absolute -top-2 -right-2 z-10 bg-white dark:bg-gray-800 rounded-full p-2 min-w-[44px] min-h-[44px] flex items-center justify-center shadow-md text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors border border-gray-200 dark:border-gray-700 touch-manipulation"
           aria-label="Close advertisement"
         >
           <X className="h-4 w-4" />

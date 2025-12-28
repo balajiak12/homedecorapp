@@ -2,9 +2,8 @@
 
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
-import { Search, X, Clock } from 'lucide-react'
+import { Search, X } from 'lucide-react'
 import type { BlogPost } from '@/types/blog'
-import { format } from 'date-fns'
 import Image from 'next/image'
 
 interface SearchResult extends BlogPost {
@@ -150,13 +149,14 @@ export default function SearchAutosuggest() {
           value={query}
           onChange={handleInputChange}
           onFocus={handleInputFocus}
-          className="w-full pl-10 pr-10 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
+          className="w-full pl-10 pr-10 py-2.5 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 touch-manipulation"
+          style={{ minHeight: '44px' }}
         />
         {query && (
           <button
             type="button"
             onClick={clearSearch}
-            className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+            className="absolute right-3 top-1/2 -translate-y-1/2 p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors touch-manipulation"
             aria-label="Clear search"
           >
             <X className="h-4 w-4" />
@@ -177,7 +177,7 @@ export default function SearchAutosuggest() {
                 type="button"
                 onClick={() => handleSelect(post)}
                 className={[
-                  'w-full flex items-start gap-3 p-3 rounded-lg text-left transition-colors',
+                  'w-full flex items-start gap-3 p-3 rounded-lg text-left transition-colors touch-manipulation',
                   index === selectedIndex
                     ? 'bg-primary-50 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-700'
                     : 'hover:bg-gray-50 dark:hover:bg-gray-700 border border-transparent',
@@ -196,21 +196,9 @@ export default function SearchAutosuggest() {
                   <h3 className="text-sm font-semibold text-gray-900 dark:text-white line-clamp-1 mb-1">
                     {post.title}
                   </h3>
-                  <p className="text-xs text-gray-600 dark:text-gray-300 line-clamp-2 mb-2">
+                  <p className="text-xs text-gray-600 dark:text-gray-300 line-clamp-2">
                     {post.excerpt}
                   </p>
-                  <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
-                    <span className="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 rounded text-gray-700 dark:text-gray-300">
-                      {post.category}
-                    </span>
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-3 w-3" />
-                      <span>{post.readTime} min</span>
-                    </div>
-                    <time dateTime={post.publishedAt}>
-                      {format(new Date(post.publishedAt), 'MMM d, yyyy')}
-                    </time>
-                  </div>
                 </div>
               </button>
             ))}

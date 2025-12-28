@@ -109,25 +109,25 @@ export default function BlogPostPage({ params }: PageProps) {
             priority
           />
         </div>
-        <div className="relative container-custom py-20 md:py-32">
+        <div className="relative container-custom py-12 sm:py-20 md:py-32">
           <div className="max-w-3xl">
-            <div className="mb-6">
-              <span className="px-4 py-2 bg-primary-600 text-white rounded-full text-sm font-medium">
+            <div className="mb-4 sm:mb-6">
+              <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-primary-600 text-white rounded-full text-xs sm:text-sm font-medium">
                 {post.category}
               </span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 text-balance">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-4 sm:mb-6 text-balance">
               {post.title}
             </h1>
-            <div className="flex flex-wrap items-center gap-6 text-sm text-gray-200">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-200">
               <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
+                <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
                 <time dateTime={post.publishedAt}>
                   {format(new Date(post.publishedAt), 'MMMM d, yyyy')}
                 </time>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
+                <Clock className="h-3 w-3 sm:h-4 sm:w-4" />
                 <span>{post.readTime} min read</span>
               </div>
             </div>
@@ -136,9 +136,9 @@ export default function BlogPostPage({ params }: PageProps) {
       </section>
 
       {/* Main Content */}
-      <article className="py-12">
+      <article className="py-8 sm:py-12">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
             {/* Main Content */}
             <div className="lg:col-span-8">
               {/* Ad Slot - After Hero */}
@@ -151,12 +151,12 @@ export default function BlogPostPage({ params }: PageProps) {
               <AdSlot position="inline" size="rectangle" className="my-12" />
 
               {/* Tags */}
-              <div className="mt-12 pt-8 border-t border-gray-200">
+              <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200 dark:border-gray-700">
                 <div className="flex flex-wrap gap-2">
                   {post.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
+                      className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs sm:text-sm"
                     >
                       #{tag}
                     </span>

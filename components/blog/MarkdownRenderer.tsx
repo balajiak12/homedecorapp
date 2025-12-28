@@ -3,6 +3,7 @@ import remarkGfm from 'remark-gfm'
 import rehypeUnwrapImages from 'rehype-unwrap-images'
 import Image from 'next/image'
 import { ReactNode } from 'react'
+import AdSlot from '@/components/blog/AdSlot'
 
 interface MarkdownRendererProps {
   content: string
@@ -30,6 +31,11 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               return encodeURIComponent(segment)
             }).join('/')
 
+            // Check if this is from the Valentine's Day article
+            const isValentinesDayArticle = src.toLowerCase().includes('15-unique-valentines') ||
+                                         src.toLowerCase().includes('valentines-day') ||
+                                         src.toLowerCase().includes('valentine')
+
             // Check if it's an external URL or local path
             const isExternal = src.startsWith('http://') || src.startsWith('https://')
 
@@ -42,22 +48,29 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               
               // eslint-disable-next-line @next/next/no-img-element
               return (
-                <div className="my-8">
-                  <div className={`relative w-full rounded-lg overflow-hidden ${
-                    isPinterestPin 
-                      ? 'aspect-[2/3] max-w-md mx-auto bg-transparent' // Pinterest pin aspect ratio, no background
-                      : 'aspect-video bg-gray-100 dark:bg-gray-800' // Standard 16:9
-                  }`}>
-                    <img
-                      src={encodedSrc}
-                      alt={alt || 'Article image'}
-                      className={isPinterestPin ? 'object-contain w-full h-full' : 'object-cover w-full h-full'}
-                    />
+                <>
+                  <div className="my-8">
+                    <div className={`relative w-full rounded-lg overflow-hidden ${
+                      isPinterestPin 
+                        ? 'aspect-[2/3] max-w-md mx-auto bg-transparent' // Pinterest pin aspect ratio, no background
+                        : 'aspect-video bg-gray-100 dark:bg-gray-800' // Standard 16:9
+                    }`}>
+                      <img
+                        src={encodedSrc}
+                        alt={alt || 'Article image'}
+                        className={isPinterestPin ? 'object-contain w-full h-full' : 'object-cover w-full h-full'}
+                      />
+                    </div>
+                    {alt && (
+                      <p className="text-sm text-gray-500 dark:text-gray-400 italic mt-2 text-center">{alt}</p>
+                    )}
                   </div>
-                  {alt && (
-                    <p className="text-sm text-gray-500 dark:text-gray-400 italic mt-2 text-center">{alt}</p>
+                  {isValentinesDayArticle && (
+                    <div className="my-6">
+                      <AdSlot position="inline" size="rectangle" />
+                    </div>
                   )}
-                </div>
+                </>
               )
             }
 
@@ -70,39 +83,63 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                                    src.toLowerCase().includes('pin')
             
             return (
-              <div className="my-8">
-                <div className={`relative w-full rounded-lg overflow-hidden ${
-                  isPinterestPin 
-                    ? 'aspect-[2/3] max-w-md mx-auto bg-transparent' // Pinterest pin aspect ratio (2:3), no background
-                    : 'aspect-video bg-gray-100 dark:bg-gray-800' // Standard 16:9 for other images
-                }`}>
-                  <Image
-                    src={encodedSrc}
-                    alt={alt || 'Article image'}
-                    fill
-                    className={isPinterestPin ? 'object-contain' : 'object-cover'}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 800px, 1200px"
-                  />
+              <>
+                <div className="my-8">
+                  <div className={`relative w-full rounded-lg overflow-hidden ${
+                    isPinterestPin 
+                      ? 'aspect-[2/3] max-w-md mx-auto bg-transparent' // Pinterest pin aspect ratio (2:3), no background
+                      : 'aspect-video bg-gray-100 dark:bg-gray-800' // Standard 16:9 for other images
+                  }`}>
+                    <Image
+                      src={encodedSrc}
+                      alt={alt || 'Article image'}
+                      fill
+                      className={isPinterestPin ? 'object-contain' : 'object-cover'}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 800px, 1200px"
+                    />
+                  </div>
+                  {alt && (
+                    <p className="text-sm text-gray-500 dark:text-gray-400 italic mt-2 text-center">{alt}</p>
+                  )}
                 </div>
-                {alt && (
-                  <p className="text-sm text-gray-500 dark:text-gray-400 italic mt-2 text-center">{alt}</p>
+                {isValentinesDayArticle && (
+                  <div className="my-6">
+                    <AdSlot position="inline" size="rectangle" />
+                  </div>
                 )}
-              </div>
+              </>
             )
           },
           // Custom heading styles
           h1: ({ node, ...props }) => (
-            <h1 className="text-4xl font-serif font-bold text-gray-900 dark:text-white mt-12 mb-6 first:mt-0">
+            <h1 className="text-3xl sm:text-4xl font-serif font-bold text-gray-900 dark:text-white mt-10 sm:mt-12 mb-4 sm:mb-6 first:mt-0">
               {props.children as ReactNode}
             </h1>
           ),
-          h2: ({ node, ...props }) => (
-            <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">
-              {props.children as ReactNode}
-            </h2>
-          ),
+          h2: ({ node, ...props }) => {
+            const headingText = String(props.children)
+            // Create ID for numbered headings (the 15 ideas)
+            const numberMatch = headingText.match(/^(\d+)\.\s+(.+?)(?::|$)/)
+            let id = ''
+            if (numberMatch) {
+              const number = parseInt(numberMatch[1], 10)
+              const text = numberMatch[2].trim()
+              id = `idea-${number}-${text
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '')}`
+            }
+            return (
+              <h2
+                id={id}
+                className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4 scroll-mt-28"
+              >
+                {props.children as ReactNode}
+              </h2>
+            )
+          },
           h3: ({ node, ...props }) => (
-            <h3 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mt-8 mb-3">
+            <h3 className="text-xl sm:text-2xl font-serif font-bold text-gray-900 dark:text-white mt-6 sm:mt-8 mb-2 sm:mb-3">
               {props.children as ReactNode}
             </h3>
           ),

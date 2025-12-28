@@ -25,10 +25,10 @@ export default function TermsOfServicePage() {
       </div>
 
       {/* Main Content */}
-      <article className="py-12 bg-white dark:bg-gray-900">
+      <article className="py-8 sm:py-12 bg-white dark:bg-gray-900">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 dark:text-white mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
               Terms of Service
             </h1>
             <p className="text-gray-600 dark:text-gray-400 mb-8">
@@ -36,8 +36,8 @@ export default function TermsOfServicePage() {
             </p>
 
             <div className="prose prose-lg max-w-none">
-              <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Agreement to Terms</h2>
+              <section className="mb-6 sm:mb-8">
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Agreement to Terms</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   Welcome to Modern Life Maven. These Terms of Service (&quot;Terms,&quot; &quot;Terms of Service&quot;) govern your access to and use of our website, including all content, features, and services provided by Modern Life Maven (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;).
                 </p>
@@ -50,9 +50,9 @@ export default function TermsOfServicePage() {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Use of Website</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Use of Website</h2>
                 
-                <h3 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mt-8 mb-3">Permitted Use</h3>
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-gray-900 dark:text-white mt-6 sm:mt-8 mb-2 sm:mb-3">Permitted Use</h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   You may use our website for lawful purposes only and in accordance with these Terms. You agree to:
                 </p>
@@ -64,7 +64,7 @@ export default function TermsOfServicePage() {
                   <li>Comply with all applicable laws and regulations</li>
                 </ul>
 
-                <h3 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mt-8 mb-3">Prohibited Activities</h3>
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-gray-900 dark:text-white mt-6 sm:mt-8 mb-2 sm:mb-3">Prohibited Activities</h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   You agree not to:
                 </p>
@@ -81,7 +81,7 @@ export default function TermsOfServicePage() {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Intellectual Property Rights</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Intellectual Property Rights</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   The website and its original content, features, and functionality are owned by Modern Life Maven and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.
                 </p>
@@ -99,7 +99,7 @@ export default function TermsOfServicePage() {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">User-Generated Content</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">User-Generated Content</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   If you submit comments, feedback, or other content to our website, you grant us a non-exclusive, royalty-free, perpetual, irrevocable, and fully sublicensable right to use, reproduce, modify, adapt, publish, translate, create derivative works from, distribute, and display such content throughout the world in any media.
                 </p>
@@ -118,7 +118,7 @@ export default function TermsOfServicePage() {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Affiliate Relationships and Disclosures</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Affiliate Relationships and Disclosures</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   Our website contains affiliate links. When you click on an affiliate link and make a purchase, we may receive a commission at no additional cost to you. This helps support our website and allows us to continue providing free content.
                 </p>
@@ -137,7 +137,7 @@ export default function TermsOfServicePage() {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Disclaimer of Warranties</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Disclaimer of Warranties</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   THE INFORMATION ON THIS WEBSITE IS PROVIDED ON AN &quot;AS IS&quot; BASIS. TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO:
                 </p>
@@ -153,7 +153,7 @@ export default function TermsOfServicePage() {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Limitation of Liability</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Limitation of Liability</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL MODERN LIFE MAVEN, ITS AFFILIATES, AGENTS, DIRECTORS, EMPLOYEES, OR LICENSORS BE LIABLE FOR ANY INDIRECT, PUNITIVE, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES, INCLUDING WITHOUT LIMITATION DAMAGES FOR LOSS OF PROFITS, GOODWILL, USE, DATA, OR OTHER INTANGIBLE LOSSES, ARISING OUT OF OR RELATING TO THE USE OF, OR INABILITY TO USE, THE WEBSITE.
                 </p>
@@ -166,14 +166,14 @@ export default function TermsOfServicePage() {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Indemnification</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Indemnification</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   You agree to defend, indemnify, and hold harmless Modern Life Maven, its affiliates, licensors, and service providers, and its and their respective officers, directors, employees, contractors, agents, licensors, suppliers, successors, and assigns from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys&apos; fees) arising out of or relating to your violation of these Terms or your use of the website.
                 </p>
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Third-Party Links and Content</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Third-Party Links and Content</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   Our website may contain links to third-party websites, products, or services. These links are provided for your convenience only. We do not endorse, warrant, or assume responsibility for the content, privacy policies, or practices of any third-party websites.
                 </p>
@@ -183,7 +183,7 @@ export default function TermsOfServicePage() {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Termination</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Termination</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   We may terminate or suspend your access to the website immediately, without prior notice or liability, for any reason, including without limitation if you breach these Terms.
                 </p>
@@ -193,28 +193,28 @@ export default function TermsOfServicePage() {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Governing Law and Jurisdiction</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Governing Law and Jurisdiction</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   These Terms shall be governed by and construed in accordance with the laws of [Your Jurisdiction], without regard to its conflict of law provisions. You agree to submit to the personal and exclusive jurisdiction of the courts located in [Your Jurisdiction] for the resolution of any disputes arising from or relating to these Terms or the website.
                 </p>
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Severability</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Severability</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   If any provision of these Terms is found to be unenforceable or invalid, that provision shall be limited or eliminated to the minimum extent necessary so that these Terms shall otherwise remain in full force and effect and enforceable.
                 </p>
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Entire Agreement</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Entire Agreement</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   These Terms, together with our Privacy Policy, constitute the entire agreement between you and Modern Life Maven regarding your use of the website and supersede all prior and contemporaneous written or oral agreements between you and Modern Life Maven.
                 </p>
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Contact Information</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Contact Information</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   If you have any questions about these Terms of Service, please contact us at:
                 </p>

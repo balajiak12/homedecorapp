@@ -105,11 +105,11 @@ export default function Header() {
       className="sticky top-0 z-50 border-b border-gray-200/70 dark:border-gray-700/70 bg-white/90 dark:bg-gray-900/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-gray-900/70"
     >
       <nav className="container-custom" aria-label="Global">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <div className="flex">
             <Link href="/" className="flex items-center">
-              <span className="text-2xl font-serif font-bold text-primary-600 dark:text-primary-400">
+              <span className="text-xl sm:text-2xl font-serif font-bold text-primary-600 dark:text-primary-400">
                 Modern Life Maven
               </span>
             </Link>
@@ -129,7 +129,7 @@ export default function Header() {
                     aria-haspopup="menu"
                     aria-expanded={isOpen}
                     className={[
-                      'group inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+                      'group inline-flex items-center gap-2 rounded-lg px-3 py-2.5 min-h-[44px] text-sm font-medium transition-colors touch-manipulation',
                       'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2',
                       isActive
                         ? 'text-primary-700 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30'
@@ -155,17 +155,17 @@ export default function Header() {
           </div>
 
           {/* Search + Theme Toggle + Mobile Menu Button */}
-          <div className="flex items-center gap-4 lg:flex-1 lg:justify-end">
+          <div className="flex items-center gap-2 sm:gap-4 lg:flex-1 lg:justify-end">
             <div className="hidden lg:block w-80">
               <SearchAutosuggest />
             </div>
-            <div className="lg:hidden w-48 sm:w-56">
+            <div className="lg:hidden w-32 xs:w-40 sm:w-48">
               <SearchAutosuggest />
             </div>
             <ThemeToggle />
             <button
               type="button"
-              className="lg:hidden p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+              className="lg:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 touch-manipulation"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -202,7 +202,7 @@ export default function Header() {
                       <Link
                         key={sub.href}
                         href={sub.href}
-                        className="rounded-xl px-4 py-3 text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2"
+                        className="rounded-xl px-4 py-3 min-h-[44px] text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2 touch-manipulation"
                         onClick={() => setOpenCategoryHref(null)}
                       >
                         {SubIcon && <SubIcon className="h-4 w-4 text-gray-500 dark:text-gray-400" />}
@@ -234,7 +234,7 @@ export default function Header() {
                         <button
                           type="button"
                           className={[
-                            'w-full flex items-center justify-between gap-3 px-4 py-3 text-sm font-semibold transition-colors',
+                            'w-full flex items-center justify-between gap-3 px-4 py-3 min-h-[44px] text-sm font-semibold transition-colors touch-manipulation',
                             isActive ? 'bg-primary-50 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300' : 'text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700',
                           ].join(' ')}
                           onClick={() => setOpenMobileCategoryHref((prev) => (prev === category.href ? null : category.href))}
@@ -263,7 +263,7 @@ export default function Header() {
                                   <Link
                                     key={sub.href}
                                     href={sub.href}
-                                    className="rounded-xl px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2"
+                                    className="rounded-xl px-3 py-2.5 min-h-[44px] text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2 touch-manipulation"
                                     onClick={() => {
                                       setMobileMenuOpen(false)
                                       setOpenMobileCategoryHref(null)

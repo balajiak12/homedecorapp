@@ -27,10 +27,10 @@ export default function Home() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 dark:text-white mb-6 text-balance">
                 Live Better, Smarter, and More Beautifully
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                 Discover practical money-saving tips, home decor inspiration, and lifestyle advice to help you create a beautiful, affordable life. From budgeting strategies to interior design, we&apos;ve got you covered.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-3 sm:gap-4">
                 <a href="#featured-posts" className="btn-primary">
                   Explore Articles
                 </a>

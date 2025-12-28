@@ -25,10 +25,10 @@ export default function PrivacyPolicyPage() {
       </div>
 
       {/* Main Content */}
-      <article className="py-12 bg-white dark:bg-gray-900">
+      <article className="py-8 sm:py-12 bg-white dark:bg-gray-900">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 dark:text-white mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
               Privacy Policy
             </h1>
             <p className="text-gray-600 dark:text-gray-400 mb-8">
@@ -36,8 +36,8 @@ export default function PrivacyPolicyPage() {
             </p>
 
             <div className="prose prose-lg max-w-none">
-              <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Introduction</h2>
+              <section className="mb-6 sm:mb-8">
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Introduction</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   Welcome to Modern Life Maven (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;). We are committed to protecting your privacy and ensuring you have a positive experience on our website. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.
                 </p>
@@ -47,9 +47,9 @@ export default function PrivacyPolicyPage() {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Information We Collect</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Information We Collect</h2>
                 
-                <h3 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mt-8 mb-3">Information You Provide</h3>
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-gray-900 dark:text-white mt-6 sm:mt-8 mb-2 sm:mb-3">Information You Provide</h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   We may collect information that you voluntarily provide to us when you:
                 </p>
@@ -64,7 +64,7 @@ export default function PrivacyPolicyPage() {
                   This information may include your name, email address, and any other information you choose to provide.
                 </p>
 
-                <h3 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mt-8 mb-3">Automatically Collected Information</h3>
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-gray-900 dark:text-white mt-6 sm:mt-8 mb-2 sm:mb-3">Automatically Collected Information</h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   When you visit our website, we automatically collect certain information about your device and browsing behavior, including:
                 </p>
@@ -80,7 +80,7 @@ export default function PrivacyPolicyPage() {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">How We Use Your Information</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">How We Use Your Information</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   We use the information we collect for various purposes, including:
                 </p>
@@ -96,7 +96,7 @@ export default function PrivacyPolicyPage() {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Cookies and Tracking Technologies</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Cookies and Tracking Technologies</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   We use cookies, web beacons, and similar tracking technologies to collect and store information about your preferences and activity on our website. Cookies are small text files placed on your device when you visit a website.
                 </p>
@@ -115,7 +115,7 @@ export default function PrivacyPolicyPage() {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Third-Party Services and Advertising</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Third-Party Services and Advertising</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   Our website uses third-party services and advertising partners, including:
                 </p>
@@ -135,7 +135,7 @@ export default function PrivacyPolicyPage() {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Affiliate Links</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Affiliate Links</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   Our website contains affiliate links. When you click on an affiliate link and make a purchase, we may receive a commission at no additional cost to you. Affiliate links are tracked through cookies and other tracking technologies to properly attribute sales to our website.
                 </p>
@@ -145,7 +145,7 @@ export default function PrivacyPolicyPage() {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Data Security</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Data Security</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure.
                 </p>
@@ -155,7 +155,7 @@ export default function PrivacyPolicyPage() {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Your Rights and Choices</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Your Rights and Choices</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   Depending on your location, you may have certain rights regarding your personal information, including:
                 </p>
@@ -174,7 +174,7 @@ export default function PrivacyPolicyPage() {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Children&apos;s Privacy</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Children&apos;s Privacy</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   Our website is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately.
                 </p>
@@ -184,7 +184,7 @@ export default function PrivacyPolicyPage() {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Changes to This Privacy Policy</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Changes to This Privacy Policy</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of any material changes by posting the new Privacy Policy on this page and updating the &quot;Last updated&quot; date.
                 </p>
@@ -194,7 +194,7 @@ export default function PrivacyPolicyPage() {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-10 mb-4">Contact Us</h2>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white mt-8 sm:mt-10 mb-3 sm:mb-4">Contact Us</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                   If you have any questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact us at:
                 </p>
